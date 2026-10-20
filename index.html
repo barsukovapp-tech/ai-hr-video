@@ -207,6 +207,12 @@ nav .btn{padding:9px 16px;font-size:14px}
 .reel{display:grid;grid-template-columns:repeat(6,1fr);gap:16px}
 .slot{grid-column:span 2;margin:0;display:grid;gap:10px;min-width:0}
 .slot.wide{grid-column:span 4}
+.slot.feature{grid-column:1/-1}
+.slot.feature .screen{aspect-ratio:16/9}
+.sound{position:absolute;top:14px;right:14px;z-index:2;display:inline-flex;align-items:center;gap:8px;font:600 13px var(--body);padding:8px 14px;border-radius:999px;border:1px solid color-mix(in srgb,var(--on-frame) 30%,transparent);background:color-mix(in srgb,var(--frame) 65%,transparent);color:var(--on-frame);cursor:pointer;backdrop-filter:blur(6px)}
+.sound:hover{background:color-mix(in srgb,var(--frame) 85%,transparent)}
+.sound i{width:8px;height:8px;border-radius:50%;background:var(--muted)}
+.sound[aria-pressed="true"] i{background:var(--rec)}
 .slot.tall .screen{aspect-ratio:9/16}
 .slot .screen{position:relative;aspect-ratio:16/9;max-width:100%;border-radius:14px;overflow:hidden;background:var(--frame);color:var(--on-frame)}
 .slot.wide .screen{aspect-ratio:auto;height:100%;min-height:220px}
@@ -298,6 +304,7 @@ footer .in{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px}
   .viewfinder{aspect-ratio:4/3}
   .reel{grid-template-columns:repeat(2,1fr)}
   .slot,.slot.wide{grid-column:span 2}
+  .slot.feature{grid-column:1/-1}
   .slot.tall{grid-column:span 1}
   .slot.wide .screen{aspect-ratio:16/9;height:auto;min-height:0}
   .why,.uses{grid-template-columns:1fr}
@@ -368,9 +375,17 @@ footer .in{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px}
       <p style="color:var(--muted)">Горизонтальные ролики для сайта и презентаций, вертикальные для соцсетей и корпоративного Telegram.</p>
     </div>
     <!-- Чтобы вставить пример: замените <div class="gen"></div><div class="scan"></div> внутри .screen
-         на <video src="файл.mp4" autoplay muted loop playsinline></video>
+         на <video src="media/файл.mp4" autoplay muted loop playsinline></video>
          и уберите строку «Пример скоро». -->
     <div class="reel">
+      <figure class="slot feature reveal">
+        <div class="screen">
+          <video id="nyVideo" src="media/new-year-december.mp4" poster="media/new-year-december.jpg" autoplay muted loop playsinline preload="metadata" aria-label="Новогоднее поздравление команде компании «Норд-Логистик»"></video>
+          <button class="sound" id="nySound" type="button" aria-pressed="false"><i></i><span>Включить звук</span></button>
+          <div class="badge"><span>16:9 · 18 с · со звуком</span></div>
+        </div>
+        <figcaption><b>Новогоднее поздравление команде</b><span>Пакет «Повод» · бумажная диорама, кинетические титры, музыка · компания вымышленная</span></figcaption>
+      </figure>
       <figure class="slot wide reveal">
         <div class="screen"><div class="gen"></div><div class="scan"></div><div class="badge"><span>Пример скоро</span><span>16:9 · 60 с</span></div></div>
         <figcaption><b>Ценности компании</b><span>Пакет «История»</span></figcaption>
@@ -381,7 +396,7 @@ footer .in{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px}
       </figure>
       <figure class="slot reveal">
         <div class="screen"><div class="gen"></div><div class="scan"></div><div class="badge"><span>Пример скоро</span><span>16:9 · 30 с</span></div></div>
-        <figcaption><b>Новогоднее поздравление</b><span>Пакет «Повод»</span></figcaption>
+        <figcaption><b>Итоги года в цифрах</b><span>Пакет «Повод»</span></figcaption>
       </figure>
       <figure class="slot reveal">
         <div class="screen"><div class="gen"></div><div class="scan"></div><div class="badge"><span>Пример скоро</span><span>16:9 · 90 с</span></div></div>
@@ -549,6 +564,18 @@ footer .in{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px}
     document.querySelectorAll('.reveal').forEach(function(el){
       var r = el.getBoundingClientRect();
       if(r.top > window.innerHeight){ el.classList.add('pending'); io.observe(el); }
+    });
+  }
+
+  // Звук у примера: браузеры запускают видео только без звука, включает зритель
+  var v = document.getElementById('nyVideo'), sb = document.getElementById('nySound');
+  if (v && sb) {
+    if (reduce) { v.removeAttribute('autoplay'); v.pause(); v.controls = true; }
+    sb.addEventListener('click', function(){
+      var on = v.muted;
+      v.muted = !on; sb.setAttribute('aria-pressed', on ? 'true' : 'false');
+      sb.querySelector('span').textContent = on ? 'Выключить звук' : 'Включить звук';
+      if (on) { v.currentTime = 0; var p = v.play(); if (p && p.catch) p.catch(function(){}); }
     });
   }
 
