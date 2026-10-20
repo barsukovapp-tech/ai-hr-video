@@ -305,6 +305,7 @@ footer .in{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px}
   .reel{grid-template-columns:repeat(2,1fr)}
   .slot,.slot.wide{grid-column:span 2}
   .slot.feature{grid-column:1/-1}
+  .slot.tall.ph{display:none}
   .slot.tall{grid-column:span 1}
   .slot.wide .screen{aspect-ratio:16/9;height:auto;min-height:0}
   .why,.uses{grid-template-columns:1fr}
@@ -386,21 +387,29 @@ footer .in{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px}
         </div>
         <figcaption><b>Новогоднее поздравление команде</b><span>Пакет «Повод» · бумажная диорама, кинетические титры, музыка · компания вымышленная</span></figcaption>
       </figure>
-      <figure class="slot wide reveal">
-        <div class="screen"><div class="gen"></div><div class="scan"></div><div class="badge"><span>Пример скоро</span><span>16:9 · 60 с</span></div></div>
-        <figcaption><b>Ценности компании</b><span>Пакет «История»</span></figcaption>
+      <figure class="slot tall reveal">
+        <div class="screen">
+          <video src="media/vacancy.mp4" poster="media/vacancy.jpg" autoplay muted loop playsinline preload="metadata" aria-label="Ролик к вакансии кладовщика, бумажная диорама"></video>
+          <button class="sound" type="button" aria-pressed="false"><i></i><span>Звук</span></button>
+          <div class="badge"><span>9:16 · 21 с</span></div>
+        </div>
+        <figcaption><b>Вакансия «Кладовщик» · диорама</b><span>Пакет «Повод» · ИИ-видео, бумажный мир</span></figcaption>
       </figure>
       <figure class="slot tall reveal">
         <div class="screen">
-          <video src="media/vacancy.mp4" poster="media/vacancy.jpg" autoplay muted loop playsinline preload="metadata" aria-label="Ролик к вакансии кладовщика компании «Норд-Логистик»"></video>
+          <video src="media/vacancy-flat.mp4" poster="media/vacancy-flat.jpg" autoplay muted loop playsinline preload="metadata" aria-label="Ролик к вакансии кладовщика, плоская векторная анимация"></video>
           <button class="sound" type="button" aria-pressed="false"><i></i><span>Звук</span></button>
-          <div class="badge"><span>9:16 · 21 с · со звуком</span></div>
+          <div class="badge"><span>9:16 · 21 с</span></div>
         </div>
-        <figcaption><b>Ролик к вакансии «Кладовщик»</b><span>Пакет «Повод» · для Reels, Stories и карточки вакансии · условия вымышленные</span></figcaption>
+        <figcaption><b>Вакансия «Кладовщик» · вектор</b><span>Пакет «Повод» · моушн-дизайн, инфографика</span></figcaption>
+      </figure>
+      <figure class="slot tall ph reveal">
+        <div class="screen"><div class="gen"></div><div class="scan"></div><div class="badge"><span>Пример скоро</span><span>9:16 · 30 с</span></div></div>
+        <figcaption><b>Итоги года в цифрах</b><span>Пакет «Повод»</span></figcaption>
       </figure>
       <figure class="slot reveal">
-        <div class="screen"><div class="gen"></div><div class="scan"></div><div class="badge"><span>Пример скоро</span><span>16:9 · 30 с</span></div></div>
-        <figcaption><b>Итоги года в цифрах</b><span>Пакет «Повод»</span></figcaption>
+        <div class="screen"><div class="gen"></div><div class="scan"></div><div class="badge"><span>Пример скоро</span><span>16:9 · 60 с</span></div></div>
+        <figcaption><b>Ценности компании</b><span>Пакет «История»</span></figcaption>
       </figure>
       <figure class="slot reveal">
         <div class="screen"><div class="gen"></div><div class="scan"></div><div class="badge"><span>Пример скоро</span><span>16:9 · 90 с</span></div></div>
