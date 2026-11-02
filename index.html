@@ -204,9 +204,10 @@ nav .btn{padding:9px 16px;font-size:14px}
 @keyframes scroll{to{transform:translateX(-50%)}}
 
 /* examples */
-.reel{display:grid;grid-template-columns:repeat(6,1fr);gap:16px}
-.slot{grid-column:span 2;margin:0;display:grid;gap:10px;min-width:0}
-.slot.wide{grid-column:span 4}
+.reel{display:grid;grid-template-columns:repeat(12,1fr);gap:16px}
+.slot{grid-column:span 4;margin:0;display:grid;gap:10px;min-width:0}
+.slot.wide{grid-column:span 8}
+.slot.tall.q{grid-column:span 3}
 .slot.feature{grid-column:1/-1}
 .slot.feature .screen{aspect-ratio:16/9}
 .sound{position:absolute;top:14px;right:14px;z-index:2;display:inline-flex;align-items:center;gap:8px;font:600 13px var(--body);padding:8px 14px;border-radius:999px;border:1px solid color-mix(in srgb,var(--on-frame) 30%,transparent);background:color-mix(in srgb,var(--frame) 65%,transparent);color:var(--on-frame);cursor:pointer;backdrop-filter:blur(6px)}
@@ -306,7 +307,7 @@ footer .in{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px}
   .slot,.slot.wide{grid-column:span 2}
   .slot.feature{grid-column:1/-1}
   .slot.tall.ph{display:none}
-  .slot.tall{grid-column:span 1}
+  .slot.tall,.slot.tall.q{grid-column:span 1}
   .slot.wide .screen{aspect-ratio:16/9;height:auto;min-height:0}
   .why,.uses{grid-template-columns:1fr}
   .timeline{grid-template-columns:1fr;border-top:0;border-left:2px solid var(--fg);padding-top:0;padding-left:24px;gap:22px}
@@ -381,13 +382,29 @@ footer .in{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px}
     <div class="reel">
       <figure class="slot feature reveal">
         <div class="screen">
-          <video id="nyVideo" src="media/new-year-december.mp4" poster="media/new-year-december.jpg" autoplay muted loop playsinline preload="metadata" aria-label="Новогоднее поздравление команде компании «Норд-Логистик»"></video>
+          <video src="media/mentor.mp4" poster="media/mentor.jpg" autoplay muted loop playsinline preload="metadata" aria-label="Имиджевый ролик «Наставник»: мастер передаёт ремесло ученику, реалистичное кино"></video>
           <button class="sound" type="button" aria-pressed="false"><i></i><span>Включить звук</span></button>
-          <div class="badge"><span>16:9 · 18 с · со звуком</span></div>
+          <div class="badge"><span>16:9 · 60 с · со звуком</span></div>
         </div>
-        <figcaption><b>Новогоднее поздравление команде</b><span>Пакет «Повод» · бумажная диорама, кинетические титры, музыка · компания вымышленная</span></figcaption>
+        <figcaption><b>«Наставник» · имиджевое кино</b><span>Пакет «История» · реалистичные герои, широкий кадр, история на 7 лет без единой съёмки · компания вымышленная</span></figcaption>
       </figure>
-      <figure class="slot tall reveal">
+      <figure class="slot feature reveal">
+        <div class="screen">
+          <video src="media/24h.mp4" poster="media/24h.jpg" autoplay muted loop playsinline preload="metadata" aria-label="Имиджевый ролик «24 часа»: одна посылка проходит через руки восьми сотрудников, а в финале — пустое место для нового коллеги"></video>
+          <button class="sound" type="button" aria-pressed="false"><i></i><span>Включить звук</span></button>
+          <div class="badge"><span>16:9 · 36 с · со звуком</span></div>
+        </div>
+        <figcaption><b>«24 часа» · имиджевое кино</b><span>Пакет «История» · сутки логистической компании, восемь профессий, одна посылка · компания вымышленная</span></figcaption>
+      </figure>
+      <figure class="slot tall q reveal">
+        <div class="screen">
+          <video src="media/24h-v15.mp4" poster="media/24h-v15.jpg" autoplay muted loop playsinline preload="metadata" aria-label="Вертикальная версия ролика «24 часа» для соцсетей: быстрые кадры смены и пустое место для нового коллеги"></video>
+          <button class="sound" type="button" aria-pressed="false"><i></i><span>Звук</span></button>
+          <div class="badge"><span>9:16 · 15 с</span></div>
+        </div>
+        <figcaption><b>«24 часа» · вертикаль для соцсетей</b><span>Нарезка из ролика «История» для VK Клипов и Telegram · без доплаты за пересъёмку</span></figcaption>
+      </figure>
+      <figure class="slot tall q reveal">
         <div class="screen">
           <video src="media/vacancy.mp4" poster="media/vacancy.jpg" autoplay muted loop playsinline preload="metadata" aria-label="Ролик к вакансии кладовщика, бумажная диорама"></video>
           <button class="sound" type="button" aria-pressed="false"><i></i><span>Звук</span></button>
@@ -395,7 +412,7 @@ footer .in{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px}
         </div>
         <figcaption><b>Вакансия «Кладовщик» · диорама</b><span>Пакет «Повод» · ИИ-видео, бумажный мир</span></figcaption>
       </figure>
-      <figure class="slot tall reveal">
+      <figure class="slot tall q reveal">
         <div class="screen">
           <video src="media/vacancy-flat.mp4" poster="media/vacancy-flat.jpg" autoplay muted loop playsinline preload="metadata" aria-label="Ролик к вакансии кладовщика, плоская векторная анимация"></video>
           <button class="sound" type="button" aria-pressed="false"><i></i><span>Звук</span></button>
@@ -403,13 +420,21 @@ footer .in{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px}
         </div>
         <figcaption><b>Вакансия «Кладовщик» · вектор</b><span>Пакет «Повод» · моушн-дизайн, инфографика</span></figcaption>
       </figure>
-      <figure class="slot tall reveal">
+      <figure class="slot tall q reveal">
         <div class="screen">
           <video src="media/professions-01.mp4" poster="media/professions-01.jpg" autoplay muted loop playsinline preload="metadata" aria-label="Рубрика о профессиях, выпуск 1: инженер-технолог, акварель"></video>
           <button class="sound" type="button" aria-pressed="false"><i></i><span>Звук</span></button>
           <div class="badge"><span>9:16 · 30 с</span></div>
         </div>
         <figcaption><b>«Профессии изнутри» · выпуск 01</b><span>Пакет «Серия» · акварельный скетчбук, рассказ от первого лица</span></figcaption>
+      </figure>
+      <figure class="slot feature reveal">
+        <div class="screen">
+          <video id="nyVideo" src="media/new-year-december.mp4" poster="media/new-year-december.jpg" autoplay muted loop playsinline preload="metadata" aria-label="Новогоднее поздравление команде компании «Норд-Логистик»"></video>
+          <button class="sound" type="button" aria-pressed="false"><i></i><span>Включить звук</span></button>
+          <div class="badge"><span>16:9 · 18 с · со звуком</span></div>
+        </div>
+        <figcaption><b>Новогоднее поздравление команде</b><span>Пакет «Повод» · бумажная диорама, кинетические титры, музыка · компания вымышленная</span></figcaption>
       </figure>
       <figure class="slot reveal">
         <div class="screen">
@@ -434,22 +459,6 @@ footer .in{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px}
           <div class="badge"><span>16:9 · 33 с</span></div>
         </div>
         <figcaption><b>Итоги года в цифрах</b><span>Пакет «Повод» · моушн-инфографика, счётчики, музыка в такт</span></figcaption>
-      </figure>
-      <figure class="slot feature reveal">
-        <div class="screen">
-          <video src="media/mentor.mp4" poster="media/mentor.jpg" autoplay muted loop playsinline preload="metadata" aria-label="Имиджевый ролик «Наставник»: мастер передаёт ремесло ученику, реалистичное кино"></video>
-          <button class="sound" type="button" aria-pressed="false"><i></i><span>Включить звук</span></button>
-          <div class="badge"><span>16:9 · 60 с · со звуком</span></div>
-        </div>
-        <figcaption><b>«Наставник» · имиджевое кино</b><span>Пакет «История» · реалистичные герои, широкий кадр, история на 7 лет без единой съёмки · компания вымышленная</span></figcaption>
-      </figure>
-      <figure class="slot feature reveal">
-        <div class="screen">
-          <video src="media/24h.mp4" poster="media/24h.jpg" autoplay muted loop playsinline preload="metadata" aria-label="Имиджевый ролик «24 часа»: одна посылка проходит через руки восьми сотрудников, а в финале — пустое место для нового коллеги"></video>
-          <button class="sound" type="button" aria-pressed="false"><i></i><span>Включить звук</span></button>
-          <div class="badge"><span>16:9 · 36 с · со звуком</span></div>
-        </div>
-        <figcaption><b>«24 часа» · имиджевое кино</b><span>Пакет «История» · сутки логистической компании, восемь профессий, одна посылка · компания вымышленная</span></figcaption>
       </figure>
     </div>
   </div>
@@ -581,7 +590,7 @@ footer .in{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px}
   </div>
 </section>
 
-<footer><div class="in"><span>Анастасия Барсукова · ИИ-видео для HR-бренда</span><span>Цены действительны до 31.12.2026</span></div></footer>
+<footer><div class="in"><span>Анастасия Барсукова · ИИ-видео для HR-бренда</span><span><a href="privacy.html" style="color:inherit">Политика обработки персональных данных</a> · Цены действительны до 31.12.2026</span></div></footer>
 
 <script>
 (function(){
