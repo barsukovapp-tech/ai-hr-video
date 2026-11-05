@@ -276,6 +276,18 @@ nav .btn{padding:9px 16px;font-size:14px}
 ol.timeline{margin:0;padding-left:0}
 
 /* terms + contact */
+.about{display:grid;grid-template-columns:minmax(0,340px) minmax(0,1fr);gap:48px;align-items:center}
+.about-photo{margin:0;border-radius:16px;overflow:hidden;background:var(--accent-soft)}
+.about-photo img{display:block;width:100%;height:auto}
+.about-text{display:grid;gap:16px;min-width:0}
+.about-text p{color:var(--muted);max-width:60ch}
+.about-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin:8px 0 0;padding:0;list-style:none}
+.about-stats li{min-width:0;display:grid;gap:4px;align-content:start;padding-top:12px;border-top:1px solid var(--line)}
+.about-stats b{font-family:var(--display);font-weight:400;font-size:clamp(26px,3vw,34px);line-height:1.1;color:var(--accent)}
+.about-stats span{font-size:14.5px;color:var(--muted)}
+.brands{margin-top:40px;display:grid;gap:14px}
+.brands ul{display:flex;flex-wrap:wrap;gap:10px;margin:0;padding:0;list-style:none}
+.brands li{padding:8px 14px;border:1px solid var(--line);border-radius:999px;background:var(--surface);font-size:15px;font-weight:500}
 .terms{display:grid;grid-template-columns:1fr 1fr;gap:12px 40px;margin:0;padding:0;list-style:none}
 .terms li{min-width:0;padding-left:22px;position:relative;color:var(--muted)}
 .terms li::before{content:"";position:absolute;left:0;top:.62em;width:10px;height:2px;background:var(--accent)}
@@ -314,10 +326,13 @@ footer .in{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px}
   .timeline{grid-template-columns:1fr;border-top:0;border-left:2px solid var(--fg);padding-top:0;padding-left:24px;gap:22px}
   .playhead{display:none}
   .terms{grid-template-columns:1fr}
+  .about{grid-template-columns:1fr;gap:28px}
+  .about-photo{max-width:320px}
   section{padding-block:56px}
 }
 @media (max-width:560px){
   .packs{grid-template-columns:1fr}
+  .about-stats{grid-template-columns:1fr}
   nav .btn{display:none}
 }
 @media (prefers-reduced-motion:reduce){
@@ -550,6 +565,30 @@ footer .in{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px}
       <li><b>Скидка 20% первым клиентам</b> в обмен на кейс в портфолио и короткий отзыв.</li>
       <li><b>Новогодние ролики</b> принимаю в работу до 10 декабря 2026 года.</li>
     </ul>
+  </div>
+</section>
+
+<section id="about">
+  <div class="in">
+    <div class="sec-head reveal"><span class="tc">Обо мне</span><h2>HR-бренд знаю изнутри, ролики делаю сама</h2></div>
+    <div class="about reveal">
+      <figure class="about-photo"><img src="media/about.webp" width="1144" height="1394" loading="lazy" alt="Анастасия Барсукова"></figure>
+      <div class="about-text">
+        <p>Я Анастасия Барсукова, AI Creative Director. Больше семи лет занималась HR-брендингом и корпоративными коммуникациями, затем сделала более 450 презентаций для руководителей, собственников бизнеса и международных клиентов.</p>
+        <p>Сегодня соединяю стратегию, дизайн и AI-production. Веду ролик сама от идеи до монтажа, без съёмочной группы.</p>
+        <ul class="about-stats">
+          <li><b>7+ лет</b><span>в HR-брендинге и корпоративных коммуникациях</span></li>
+          <li><b>450+</b><span>презентаций для бизнеса</span></li>
+          <li><b>Полный цикл</b><span>идея, сценарий, генерация, монтаж</span></li>
+        </ul>
+      </div>
+    </div>
+    <div class="brands reveal">
+      <span class="tc">Бренды в портфолио</span>
+      <ul>
+        <li>FBS</li><li>Atlantix</li><li>Vokzal 1853</li><li>«Ресурс»</li><li>Perque Studio</li><li>GRANADO</li><li>Fueguia 1833</li><li>Jam Bar</li><li>Lemonardo</li>
+      </ul>
+    </div>
   </div>
 </section>
 
