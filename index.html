@@ -135,7 +135,7 @@ img,video{max-width:100%}
 .faq details[open] summary::after{transform:rotate(45deg)}
 .faq p{margin-top:10px;color:var(--muted);max-width:68ch}
 body{margin:0;background:var(--bg);color:var(--fg);font-family:var(--body);font-size:16px;line-height:1.6;overflow-x:hidden}
-.in{max-width:1120px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+.in{max-width:1320px;margin:0 auto;padding-left:max(clamp(16px,3vw,40px),env(safe-area-inset-left,0px));padding-right:max(clamp(16px,3vw,40px),env(safe-area-inset-right,0px))}
 section{padding-block:72px}
 h1,h2,.display{font-family:var(--display);font-weight:400;letter-spacing:-.01em;margin:0;text-wrap:balance}
 h2{font-size:clamp(28px,4.4vw,44px);line-height:1.08}
