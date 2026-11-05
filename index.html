@@ -292,16 +292,18 @@ ol.timeline{margin:0;padding-left:0}
 .terms li{min-width:0;padding-left:22px;position:relative;color:var(--muted)}
 .terms li::before{content:"";position:absolute;left:0;top:.62em;width:10px;height:2px;background:var(--accent)}
 .terms li b{color:var(--fg);font-weight:600}
-.final{background:var(--frame);color:var(--on-frame);border-radius:28px;padding:56px clamp(20px,5vw,64px);display:grid;grid-template-columns:1.2fr 1fr;gap:40px;align-items:center;position:relative;overflow:hidden}
+.final{background:var(--frame);color:var(--on-frame);border-radius:28px;padding:56px clamp(20px,5vw,64px);display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,1fr);gap:40px;align-items:center;position:relative;overflow:hidden}
 .final h2{font-size:clamp(30px,4.6vw,52px)}
 .final p{opacity:.75;margin-top:16px;max-width:46ch}
 .final .vf-bg{opacity:.35}
 .final>*{position:relative;min-width:0}
+.final>.vf-bg{position:absolute}
 .cards{display:grid;gap:10px}
 .cards div{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:14px 16px;border-radius:12px;background:color-mix(in srgb,var(--on-frame) 8%,transparent);border:1px solid color-mix(in srgb,var(--on-frame) 14%,transparent)}
 .cards dt{font-family:var(--mono);font-size:11.5px;letter-spacing:.06em;text-transform:uppercase;opacity:.65}
 .cards dd{margin:0;font-weight:600;user-select:all;overflow-wrap:anywhere}
-.cards button{font:600 12px var(--mono);padding:6px 10px;border-radius:8px;border:0;background:var(--on-frame);color:var(--frame);cursor:pointer;flex-shrink:0}
+.cards .go{font:600 13px var(--mono);padding:9px 12px;border-radius:8px;background:var(--on-frame);color:var(--frame);text-decoration:none;white-space:nowrap;flex-shrink:0}
+.cards .go:hover{opacity:.85}
 dl.cards{margin:0}
 footer{padding-block:32px 48px;color:var(--muted);font-size:13.5px}
 footer .in{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px}
@@ -333,6 +335,7 @@ footer .in{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px}
 @media (max-width:560px){
   .packs{grid-template-columns:1fr}
   .about-stats{grid-template-columns:1fr}
+  .cards div{flex-wrap:wrap}
   nav .btn{display:none}
 }
 @media (prefers-reduced-motion:reduce){
@@ -345,7 +348,7 @@ footer .in{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px}
 <body>
 <nav>
   <div class="in">
-    <div class="logo"><span class="dot" aria-hidden="true"></span>Анастасия Барсукова · ИИ-видео для HR</div>
+    <div class="logo"><span class="dot" aria-hidden="true"></span>Анастасия Барсукова | ИИ-видео для HR</div>
     <a class="btn" href="#contact">Обсудить ролик</a>
   </div>
 </nav>
@@ -363,16 +366,16 @@ footer .in{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px}
       <div class="facts"><span>от <b>24 000 ₽</b></span><span><b>2 круга</b> правок в цене</span><span><b>фиксированная</b> смета</span></div>
     </div>
     <div class="viewfinder" id="vf" aria-label="Анимированный видоискатель с примерами тем роликов">
-      <div class="vf-scene on"><div class="vf-bg" style="background:radial-gradient(40% 40% at 30% 30%,#2B45E0,transparent),radial-gradient(40% 40% at 70% 70%,#F0401F,transparent)"></div><div class="display">Добро пожаловать в команду<small>СЦЕНА 01 · ОНБОРДИНГ</small></div></div>
-      <div class="vf-scene"><div class="vf-bg" style="background:radial-gradient(40% 40% at 60% 30%,#11A37F,transparent),radial-gradient(40% 40% at 30% 70%,#2B45E0,transparent)"></div><div class="display">Один день из жизни инженера<small>СЦЕНА 02 · НАЙМ</small></div></div>
-      <div class="vf-scene"><div class="vf-bg" style="background:radial-gradient(40% 40% at 40% 60%,#E0A21B,transparent),radial-gradient(40% 40% at 70% 30%,#F0401F,transparent)"></div><div class="display">С Новым годом, команда!<small>СЦЕНА 03 · ПРАЗДНИК</small></div></div>
-      <div class="vf-scene"><div class="vf-bg" style="background:radial-gradient(40% 40% at 30% 50%,#8A3FE0,transparent),radial-gradient(40% 40% at 70% 40%,#2B45E0,transparent)"></div><div class="display">Наши ценности в&nbsp;60&nbsp;секундах<small>СЦЕНА 04 · EVP</small></div></div>
+      <div class="vf-scene on"><div class="vf-bg" style="background:radial-gradient(40% 40% at 30% 30%,#2B45E0,transparent),radial-gradient(40% 40% at 70% 70%,#F0401F,transparent)"></div><div class="display">Добро пожаловать в команду<small>СЦЕНА 01 | ОНБОРДИНГ</small></div></div>
+      <div class="vf-scene"><div class="vf-bg" style="background:radial-gradient(40% 40% at 60% 30%,#11A37F,transparent),radial-gradient(40% 40% at 30% 70%,#2B45E0,transparent)"></div><div class="display">Один день из жизни инженера<small>СЦЕНА 02 | НАЙМ</small></div></div>
+      <div class="vf-scene"><div class="vf-bg" style="background:radial-gradient(40% 40% at 40% 60%,#E0A21B,transparent),radial-gradient(40% 40% at 70% 30%,#F0401F,transparent)"></div><div class="display">С Новым годом, команда!<small>СЦЕНА 03 | ПРАЗДНИК</small></div></div>
+      <div class="vf-scene"><div class="vf-bg" style="background:radial-gradient(40% 40% at 30% 50%,#8A3FE0,transparent),radial-gradient(40% 40% at 70% 40%,#2B45E0,transparent)"></div><div class="display">Наши ценности в&nbsp;60&nbsp;секундах<small>СЦЕНА 04 | EVP</small></div></div>
       <div class="vf-ui" aria-hidden="true">
         <span class="c tl"></span><span class="c tr"></span><span class="c bl"></span><span class="c br"></span>
         <span class="rec"><i></i>REC</span>
         <span class="time" id="tc">00:00:00:00</span>
         <span class="prog"><i id="prog"></i></span>
-        <span class="meta">1920×1080 · 25 FPS · AI</span>
+        <span class="meta">1920×1080 | 25 FPS | AI</span>
       </div>
     </div>
   </div>
@@ -400,73 +403,73 @@ footer .in{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px}
         <div class="screen">
           <video src="media/mentor.mp4" poster="media/mentor.jpg" autoplay muted loop playsinline preload="metadata" aria-label="Имиджевый ролик «Наставник»: мастер передаёт ремесло ученику, реалистичное кино"></video>
           <button class="sound" type="button" aria-pressed="false"><i></i><span>Включить звук</span></button>
-          <div class="badge"><span>16:9 · 60 с · со звуком</span></div>
+          <div class="badge"><span>16:9 | 60 с | со звуком</span></div>
         </div>
-        <figcaption><b>«Наставник» · имиджевое кино</b><span>Пакет «История» · реалистичные герои, широкий кадр, история на 7 лет без единой съёмки · компания вымышленная</span></figcaption>
+        <figcaption><b>«Наставник» | имиджевое кино</b><span>Пакет «История» | реалистичные герои, широкий кадр, история на 7 лет без единой съёмки | компания вымышленная</span></figcaption>
       </figure>
       <figure class="slot feature reveal">
         <div class="screen">
           <video src="media/24h.mp4" poster="media/24h.jpg" autoplay muted loop playsinline preload="metadata" aria-label="Имиджевый ролик «24 часа»: одна посылка проходит через руки восьми сотрудников, а в финале — пустое место для нового коллеги"></video>
           <button class="sound" type="button" aria-pressed="false"><i></i><span>Включить звук</span></button>
-          <div class="badge"><span>16:9 · 28 с · со звуком</span></div>
+          <div class="badge"><span>16:9 | 28 с | со звуком</span></div>
         </div>
-        <figcaption><b>«24 часа» · имиджевое кино</b><span>Пакет «История» · сутки логистической компании, восемь профессий, одна посылка · компания вымышленная</span></figcaption>
+        <figcaption><b>«24 часа» | имиджевое кино</b><span>Пакет «История» | сутки логистической компании, восемь профессий, одна посылка | компания вымышленная</span></figcaption>
       </figure>
       <figure class="slot tall reveal">
         <div class="screen">
           <video src="media/first-day.mp4" poster="media/first-day.jpg" autoplay muted loop playsinline preload="metadata" aria-label="Вертикальный ролик «Первый день»: первый рабочий день в дарксторе глазами новичка, с сообщениями из рабочего чата"></video>
           <button class="sound" type="button" aria-pressed="false"><i></i><span>Звук</span></button>
-          <div class="badge"><span>9:16 · 30 с</span></div>
+          <div class="badge"><span>9:16 | 30 с</span></div>
         </div>
-        <figcaption><b>«Первый день» · POV-онбординг</b><span>Пакет «Повод» · реалистичное видео от первого лица, сообщения рабочего чата · компания вымышленная</span></figcaption>
+        <figcaption><b>«Первый день» | POV-онбординг</b><span>Пакет «Повод» | реалистичное видео от первого лица, сообщения рабочего чата | компания вымышленная</span></figcaption>
       </figure>
       <figure class="slot tall reveal">
         <div class="screen">
           <video src="media/vacancy-flat.mp4" poster="media/vacancy-flat.jpg" autoplay muted loop playsinline preload="metadata" aria-label="Ролик к вакансии кладовщика, плоская векторная анимация"></video>
           <button class="sound" type="button" aria-pressed="false"><i></i><span>Звук</span></button>
-          <div class="badge"><span>9:16 · 21 с</span></div>
+          <div class="badge"><span>9:16 | 21 с</span></div>
         </div>
-        <figcaption><b>Вакансия «Кладовщик» · вектор</b><span>Пакет «Повод» · моушн-дизайн, инфографика</span></figcaption>
+        <figcaption><b>Вакансия «Кладовщик» | вектор</b><span>Пакет «Повод» | моушн-дизайн, инфографика</span></figcaption>
       </figure>
       <figure class="slot tall reveal">
         <div class="screen">
           <video src="media/professions-01.mp4" poster="media/professions-01.jpg" autoplay muted loop playsinline preload="metadata" aria-label="Рубрика о профессиях, выпуск 1: инженер-технолог, акварель"></video>
           <button class="sound" type="button" aria-pressed="false"><i></i><span>Звук</span></button>
-          <div class="badge"><span>9:16 · 30 с</span></div>
+          <div class="badge"><span>9:16 | 30 с</span></div>
         </div>
-        <figcaption><b>«Профессии изнутри» · выпуск 01</b><span>Пакет «Серия» · акварельный скетчбук, рассказ от первого лица</span></figcaption>
+        <figcaption><b>«Профессии изнутри» | выпуск 01</b><span>Пакет «Серия» | акварельный скетчбук, рассказ от первого лица</span></figcaption>
       </figure>
       <figure class="slot feature reveal">
         <div class="screen">
           <video id="nyVideo" src="media/new-year-december.mp4" poster="media/new-year-december.jpg" autoplay muted loop playsinline preload="metadata" aria-label="Новогоднее поздравление команде компании «Норд-Логистик»"></video>
           <button class="sound" type="button" aria-pressed="false"><i></i><span>Включить звук</span></button>
-          <div class="badge"><span>16:9 · 18 с · со звуком</span></div>
+          <div class="badge"><span>16:9 | 18 с | со звуком</span></div>
         </div>
-        <figcaption><b>Новогоднее поздравление команде</b><span>Пакет «Повод» · бумажная диорама, кинетические титры, музыка · компания вымышленная</span></figcaption>
+        <figcaption><b>Новогоднее поздравление команде</b><span>Пакет «Повод» | бумажная диорама, кинетические титры, музыка | компания вымышленная</span></figcaption>
       </figure>
       <figure class="slot reveal">
         <div class="screen">
           <video src="media/values-flat2d.mp4" poster="media/values-flat2d.jpg" autoplay muted loop playsinline preload="metadata" aria-label="Ролик о ценностях компании, плоская 2D-анимация"></video>
           <button class="sound" type="button" aria-pressed="false"><i></i><span>Звук</span></button>
-          <div class="badge"><span>16:9 · 30 с</span></div>
+          <div class="badge"><span>16:9 | 30 с</span></div>
         </div>
-        <figcaption><b>Ценности компании · 2D-эксплейнер</b><span>Пакет «История» · плоская анимация, дикторская озвучка, титры-плашки</span></figcaption>
+        <figcaption><b>Ценности компании | 2D-эксплейнер</b><span>Пакет «История» | плоская анимация, дикторская озвучка, титры-плашки</span></figcaption>
       </figure>
       <figure class="slot reveal">
         <div class="screen">
           <video src="media/onboarding.mp4" poster="media/onboarding.jpg" autoplay muted loop playsinline preload="metadata" aria-label="Онбординг новичков, изометрическая 3D-анимация"></video>
           <button class="sound" type="button" aria-pressed="false"><i></i><span>Звук</span></button>
-          <div class="badge"><span>16:9 · 32 с</span></div>
+          <div class="badge"><span>16:9 | 32 с</span></div>
         </div>
-        <figcaption><b>Онбординг новичков · изометрия</b><span>Пакет «История» · 3D-остров, озвучка, таблички-указатели</span></figcaption>
+        <figcaption><b>Онбординг новичков | изометрия</b><span>Пакет «История» | 3D-остров, озвучка, таблички-указатели</span></figcaption>
       </figure>
       <figure class="slot reveal">
         <div class="screen">
           <video src="media/year-results.mp4" poster="media/year-results.jpg" autoplay muted loop playsinline preload="metadata" aria-label="Итоги года в цифрах, моушн-инфографика"></video>
           <button class="sound" type="button" aria-pressed="false"><i></i><span>Звук</span></button>
-          <div class="badge"><span>16:9 · 33 с</span></div>
+          <div class="badge"><span>16:9 | 33 с</span></div>
         </div>
-        <figcaption><b>Итоги года в цифрах</b><span>Пакет «Повод» · моушн-инфографика, счётчики, музыка в такт</span></figcaption>
+        <figcaption><b>Итоги года в цифрах</b><span>Пакет «Повод» | моушн-инфографика, счётчики, музыка в такт</span></figcaption>
       </figure>
     </div>
   </div>
@@ -502,28 +505,28 @@ footer .in{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px}
     <div class="sec-head reveal"><span class="tc">Пакеты и цены</span><h2>Цены на ИИ-ролики для бренда работодателя</h2></div>
     <div class="packs">
       <article class="pack reveal">
-        <span class="tc">до 30 с · 5 дней</span>
+        <span class="tc">до 30 с | 5 дней</span>
         <div class="name">Повод</div>
         <div class="price">24 000 ₽</div>
         <ul><li>Сценарий под задачу</li><li>Генерация, монтаж, музыка с лицензией</li><li>Субтитры, один формат</li><li>2 круга правок</li></ul>
         <div class="for">Поздравления, анонсы, ролик к вакансии</div>
       </article>
       <article class="pack hit reveal">
-        <span class="tc">60–90 с · 8 дней · хит</span>
+        <span class="tc">60–90 с | 8 дней | хит</span>
         <div class="name">История</div>
         <div class="price">45 000 ₽</div>
         <ul><li>Сценарий и ключевые кадры на согласование</li><li>ИИ-голос или диктор</li><li>16:9 + вертикальная нарезка 15 с</li><li>2 круга правок</li></ul>
         <div class="for">Ценности, онбординг, имиджевый ролик</div>
       </article>
       <article class="pack reveal">
-        <span class="tc">3 × 60 с · 15 дней</span>
+        <span class="tc">3 × 60 с | 15 дней</span>
         <div class="name">Серия</div>
         <div class="price">110 000 ₽<small>около 36 700 ₽ за ролик, выгода 18%</small></div>
         <ul><li>Общая концепция и единый стиль</li><li>ИИ-голос или диктор</li><li>3 вертикальные нарезки</li><li>2 круга правок на ролик</li></ul>
         <div class="for">Рубрика о профессиях, серия о ценностях</div>
       </article>
       <article class="pack reveal">
-        <span class="tc">6 роликов · от 20 дней</span>
+        <span class="tc">6 роликов | от 20 дней</span>
         <div class="name">Кампания</div>
         <div class="price">150 000 ₽<small>цена от, смета по брифу</small></div>
         <ul><li>Главный ролик 60–90 с</li><li>5 роликов до 30 с</li><li>ИИ-персонаж компании</li><li>Вертикальные нарезки</li></ul>
@@ -615,14 +618,14 @@ footer .in{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px}
         <p>Пары предложений достаточно: для кого ролик, к какому поводу и к какой дате.</p>
       </div>
       <dl class="cards">
-        <div><span><dt>Телефон</dt><dd><a href="tel:+79143357453" style="color:inherit">+7 914 335-74-53</a></dd></span><button type="button" data-copy="+79143357453">Копировать</button></div>
-        <div><span><dt>Почта</dt><dd><a href="mailto:barsukovapp@gmail.com" style="color:inherit">barsukovapp@gmail.com</a></dd></span><button type="button" data-copy="barsukovapp@gmail.com">Копировать</button></div>
+        <div><span><dt>Телефон</dt><dd><a href="tel:+79143357453" style="color:inherit">+7 914 335-74-53</a></dd></span><a class="go" href="https://t.me/Barsychynos" target="_blank" rel="noopener">Написать в Telegram</a></div>
+        <div><span><dt>Почта</dt><dd><a href="mailto:barsukovapp@gmail.com" style="color:inherit">barsukovapp@gmail.com</a></dd></span><a class="go" href="mailto:barsukovapp@gmail.com?subject=%D0%98%D0%98-%D1%80%D0%BE%D0%BB%D0%B8%D0%BA">Написать письмо</a></div>
       </dl>
     </div>
   </div>
 </section>
 
-<footer><div class="in"><span>Анастасия Барсукова · ИИ-видео для HR-бренда</span><span><a href="privacy.html" style="color:inherit">Политика обработки персональных данных</a> · Цены действительны до 31.12.2026</span></div></footer>
+<footer><div class="in"><span>Анастасия Барсукова | ИИ-видео для HR-бренда</span><span><a href="privacy.html" style="color:inherit">Политика обработки персональных данных</a> | Цены действительны до 31.12.2026</span></div></footer>
 
 <script>
 (function(){
@@ -668,21 +671,6 @@ footer .in{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px}
     });
     sb.dataset.base = base;
   });
-
-  // Копирование контактов
-  document.querySelectorAll('[data-copy]').forEach(function(b){
-    b.addEventListener('click', function(){
-      var txt = b.getAttribute('data-copy');
-      var done = function(){ b.textContent = 'Скопировано'; setTimeout(function(){ b.textContent = 'Копировать'; }, 1600); };
-      try{
-        navigator.clipboard.writeText(txt).then(done, function(){ select(b); });
-      }catch(e){ select(b); }
-    });
-  });
-  function select(b){
-    var dd = b.parentNode.querySelector('dd'), r = document.createRange();
-    r.selectNodeContents(dd); var s = window.getSelection(); s.removeAllRanges(); s.addRange(r);
-  }
 })();
 </script>
 
