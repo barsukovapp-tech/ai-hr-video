@@ -51,7 +51,7 @@
    },
    {
     "@type": "Offer",
-    "name": "Серия, 3 ролика по 60 секунд",
+    "name": "Серия, 3 ролика до 60 секунд",
     "price": "110000",
     "priceCurrency": "RUB"
    },
@@ -351,6 +351,19 @@ footer .in{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px}
 .cards div{background:rgba(5,7,15,.62);backdrop-filter:blur(10px)}
 .cards dt{font-size:12px;letter-spacing:.06em;font-weight:600}
 .cards .go{font:600 14px var(--body)}
+.nav-links{display:flex;gap:26px;margin-left:auto;font-size:14.5px;font-weight:500}
+.nav-links a{color:var(--muted);text-decoration:none;transition:color .2s}
+.nav-links a:hover{color:var(--fg)}
+section,header{scroll-margin-top:72px}
+.slot .screen{border:1px solid var(--line)}
+.slot.scope .sound{top:calc(12.8% + 12px);right:12px}
+.slot.scope .badge{bottom:calc(12.8% + 12px)}
+.sub{margin-top:16px;padding:22px 24px;border:1px solid var(--line);border-radius:14px;background:var(--glow);display:flex;justify-content:space-between;align-items:center;gap:24px;color:var(--on-accent)}
+.sub>div:first-child{display:grid;gap:6px;min-width:0}
+.sub .tc{color:rgba(255,255,255,.75)}
+.sub .name{font-family:var(--display);font-size:24px;line-height:1.1}
+.sub p{font-size:14.5px;color:rgba(255,255,255,.85);max-width:62ch}
+.sub .price{flex-shrink:0;text-align:right}
 @media (max-width:960px){
   .packs{grid-template-columns:repeat(2,1fr)}
 }
@@ -368,6 +381,12 @@ footer .in{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px}
   .playhead{display:none}
   .terms{grid-template-columns:1fr}
   .about{grid-template-columns:1fr;gap:28px}
+  nav .in{flex-wrap:wrap;row-gap:8px}
+  .nav-links{order:3;width:100%;margin-left:0;justify-content:space-between;gap:12px}
+  section,header{scroll-margin-top:96px}
+  .slot.tall.solo{grid-column:1/-1;grid-template-columns:1fr 1fr;gap:14px;align-items:center}
+  .sub{flex-direction:column;align-items:flex-start}
+  .sub .price{text-align:left}
   .about-photo{max-width:320px}
   section{padding-block:56px}
 }
@@ -388,6 +407,7 @@ footer .in{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px}
 <nav>
   <div class="in">
     <div class="logo"><span class="dot" aria-hidden="true"></span>Анастасия Барсукова | ИИ-видео для HR</div>
+    <div class="nav-links"><a href="#examples">Примеры</a><a href="#packs">Цены</a><a href="#about">Обо мне</a><a href="#contact">Контакты</a></div>
     <a class="btn" href="#contact">Обсудить ролик</a>
   </div>
 </nav>
@@ -414,7 +434,7 @@ footer .in{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px}
         <span class="rec"><i></i>REC</span>
         <span class="time" id="tc">00:00:00:00</span>
         <span class="prog"><i id="prog"></i></span>
-        <span class="meta">1920×1080 | 25 FPS | AI</span>
+        <span class="meta">1920×1080 | 30 FPS | ИИ</span>
       </div>
     </div>
   </div>
@@ -430,7 +450,7 @@ footer .in{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px}
 <section id="examples">
   <div class="in">
     <div class="sec-head reveal">
-      <span class="tc">Примеры</span>
+      <span class="tc">Работы</span>
       <h2>Примеры ИИ-роликов для HR</h2>
       <p style="color:var(--muted)">Горизонтальные ролики для сайта и презентаций, вертикальные для соцсетей и корпоративного Telegram.</p>
     </div>
@@ -438,26 +458,26 @@ footer .in{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px}
          на <video src="media/файл.mp4" autoplay muted loop playsinline></video>
          и уберите строку «Пример скоро». -->
     <div class="reel">
-      <figure class="slot feature reveal">
+      <figure class="slot feature scope reveal">
         <div class="screen">
           <video src="media/24h.mp4" poster="media/24h.jpg" muted loop playsinline preload="none" aria-label="Имиджевый ролик «24 часа»: одна посылка проходит через руки восьми сотрудников, а в финале — пустое место для нового коллеги"></video>
           <button class="sound" type="button" aria-pressed="false"><i></i><span>Включить звук</span></button>
-          <div class="badge"><span>16:9 | 28 с | со звуком</span></div>
+          <div class="badge"><span>16:9 | 28 с</span></div>
         </div>
-        <figcaption><b>«24 часа» | имиджевое кино</b><span>Пакет «История» | сутки логистической компании, восемь профессий, одна посылка</span></figcaption>
+        <figcaption><b>«24 часа» | имиджевое кино</b><span>Пакет «Повод» | сутки логистической компании, восемь профессий, одна посылка</span></figcaption>
       </figure>
-      <figure class="slot feature reveal">
+      <figure class="slot feature scope reveal">
         <div class="screen">
           <video src="media/mentor.mp4" poster="media/mentor.jpg" muted loop playsinline preload="none" aria-label="Имиджевый ролик «Наставник»: мастер передаёт ремесло ученику, реалистичное кино"></video>
           <button class="sound" type="button" aria-pressed="false"><i></i><span>Включить звук</span></button>
-          <div class="badge"><span>16:9 | 60 с | со звуком</span></div>
+          <div class="badge"><span>16:9 | 60 с</span></div>
         </div>
         <figcaption><b>«Наставник» | имиджевое кино</b><span>Пакет «История» | реалистичные герои, широкий кадр, история на 7 лет без единой съёмки</span></figcaption>
       </figure>
       <figure class="slot tall reveal">
         <div class="screen">
           <video src="media/first-day.mp4" poster="media/first-day.jpg" muted loop playsinline preload="none" aria-label="Вертикальный ролик «Первый день»: первый рабочий день в дарксторе глазами новичка, с сообщениями из рабочего чата"></video>
-          <button class="sound" type="button" aria-pressed="false"><i></i><span>Звук</span></button>
+          <button class="sound" type="button" aria-pressed="false"><i></i><span>Включить звук</span></button>
           <div class="badge"><span>9:16 | 30 с</span></div>
         </div>
         <figcaption><b>«Первый день» | POV-онбординг</b><span>Пакет «Повод» | реалистичное видео от первого лица, сообщения рабочего чата</span></figcaption>
@@ -465,15 +485,15 @@ footer .in{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px}
       <figure class="slot tall reveal">
         <div class="screen">
           <video src="media/vacancy-flat.mp4" poster="media/vacancy-flat.jpg" muted loop playsinline preload="none" aria-label="Ролик к вакансии кладовщика, плоская векторная анимация"></video>
-          <button class="sound" type="button" aria-pressed="false"><i></i><span>Звук</span></button>
+          <button class="sound" type="button" aria-pressed="false"><i></i><span>Включить звук</span></button>
           <div class="badge"><span>9:16 | 21 с</span></div>
         </div>
         <figcaption><b>Вакансия «Кладовщик» | вектор</b><span>Пакет «Повод» | моушн-дизайн, инфографика</span></figcaption>
       </figure>
-      <figure class="slot tall reveal">
+      <figure class="slot tall solo reveal">
         <div class="screen">
           <video src="media/professions-01.mp4" poster="media/professions-01.jpg" muted loop playsinline preload="none" aria-label="Рубрика о профессиях, выпуск 1: инженер-технолог, акварель"></video>
-          <button class="sound" type="button" aria-pressed="false"><i></i><span>Звук</span></button>
+          <button class="sound" type="button" aria-pressed="false"><i></i><span>Включить звук</span></button>
           <div class="badge"><span>9:16 | 30 с</span></div>
         </div>
         <figcaption><b>«Профессии изнутри» | выпуск 01</b><span>Пакет «Серия» | акварельный скетчбук, рассказ от первого лица</span></figcaption>
@@ -482,33 +502,33 @@ footer .in{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px}
         <div class="screen">
           <video id="nyVideo" src="media/new-year-december.mp4" poster="media/new-year-december.jpg" muted loop playsinline preload="none" aria-label="Новогоднее поздравление команде компании «Норд-Логистик»"></video>
           <button class="sound" type="button" aria-pressed="false"><i></i><span>Включить звук</span></button>
-          <div class="badge"><span>16:9 | 18 с | со звуком</span></div>
+          <div class="badge"><span>16:9 | 18 с</span></div>
         </div>
         <figcaption><b>Новогоднее поздравление команде</b><span>Пакет «Повод» | бумажная диорама, кинетические титры, музыка</span></figcaption>
       </figure>
       <figure class="slot reveal">
         <div class="screen">
           <video src="media/values-flat2d.mp4" poster="media/values-flat2d.jpg" muted loop playsinline preload="none" aria-label="Ролик о ценностях компании, плоская 2D-анимация"></video>
-          <button class="sound" type="button" aria-pressed="false"><i></i><span>Звук</span></button>
-          <div class="badge"><span>16:9 | 30 с</span></div>
+          <button class="sound" type="button" aria-pressed="false"><i></i><span>Включить звук</span></button>
+          <div class="badge"><span>16:9 | 29 с</span></div>
         </div>
-        <figcaption><b>Ценности компании | 2D-эксплейнер</b><span>Пакет «История» | плоская анимация, дикторская озвучка, титры-плашки</span></figcaption>
+        <figcaption><b>Ценности компании | 2D-эксплейнер</b><span>Пакет «Повод» | плоская анимация, дикторская озвучка, титры-плашки</span></figcaption>
       </figure>
       <figure class="slot reveal">
         <div class="screen">
           <video src="media/onboarding.mp4" poster="media/onboarding.jpg" muted loop playsinline preload="none" aria-label="Онбординг новичков, изометрическая 3D-анимация"></video>
-          <button class="sound" type="button" aria-pressed="false"><i></i><span>Звук</span></button>
+          <button class="sound" type="button" aria-pressed="false"><i></i><span>Включить звук</span></button>
           <div class="badge"><span>16:9 | 32 с</span></div>
         </div>
-        <figcaption><b>Онбординг новичков | изометрия</b><span>Пакет «История» | 3D-остров, озвучка, таблички-указатели</span></figcaption>
+        <figcaption><b>Онбординг новичков | изометрия</b><span>3D-остров, озвучка, таблички-указатели</span></figcaption>
       </figure>
       <figure class="slot reveal">
         <div class="screen">
           <video src="media/year-results.mp4" poster="media/year-results.jpg" muted loop playsinline preload="none" aria-label="Итоги года в цифрах, моушн-инфографика"></video>
-          <button class="sound" type="button" aria-pressed="false"><i></i><span>Звук</span></button>
+          <button class="sound" type="button" aria-pressed="false"><i></i><span>Включить звук</span></button>
           <div class="badge"><span>16:9 | 33 с</span></div>
         </div>
-        <figcaption><b>Итоги года в цифрах</b><span>Пакет «Повод» | моушн-инфографика, счётчики, музыка в такт</span></figcaption>
+        <figcaption><b>Итоги года в цифрах</b><span>Моушн-инфографика, счётчики, музыка в такт</span></figcaption>
       </figure>
     </div>
   </div>
@@ -541,7 +561,7 @@ footer .in{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px}
 
 <section class="packs-wrap" id="packs">
   <div class="in">
-    <div class="sec-head reveal"><span class="tc">Пакеты и цены</span><h2>Цены на ИИ-ролики для бренда работодателя</h2></div>
+    <div class="sec-head reveal"><span class="tc">Тарифы</span><h2>Цены на ИИ-ролики для бренда работодателя</h2></div>
     <div class="packs">
       <article class="pack reveal">
         <span class="tc">до 30 с | 5 дней</span>
@@ -558,7 +578,7 @@ footer .in{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px}
         <div class="for">Ценности, онбординг, имиджевый ролик</div>
       </article>
       <article class="pack reveal">
-        <span class="tc">3 × 60 с | 15 дней</span>
+        <span class="tc">3 × до 60 с | 15 дней</span>
         <div class="name">Серия</div>
         <div class="price">110 000 ₽<small>около 36 700 ₽ за ролик, выгода 18%</small></div>
         <ul><li>Общая концепция и единый стиль</li><li>ИИ-голос или диктор</li><li>3 вертикальные нарезки</li><li>2 круга правок на ролик</li></ul>
@@ -567,13 +587,16 @@ footer .in{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px}
       <article class="pack reveal">
         <span class="tc">6 роликов | от 20 дней</span>
         <div class="name">Кампания</div>
-        <div class="price">150 000 ₽<small>цена от, смета по брифу</small></div>
+        <div class="price">150 000 ₽<small>стартовая цена, точная по брифу</small></div>
         <ul><li>Главный ролик 60–90 с</li><li>5 роликов до 30 с</li><li>ИИ-персонаж компании</li><li>Вертикальные нарезки</li></ul>
         <div class="for">Запуск EVP, массовый найм, юбилей компании</div>
       </article>
     </div>
+    <div class="sub reveal">
+      <div><span class="tc">Подписка | от 3 месяцев</span><div class="name">Контент на месяц</div><p>4 ролика до 30 с: контент-план вместе с вами, ролик каждую неделю, единый стиль и приоритет в очереди.</p></div>
+      <div class="price">75 000 ₽<small>в месяц</small></div>
+    </div>
     <div class="extras reveal">
-      <span>Подписка, 4 ролика до 30 с в месяц<b>75 000 ₽</b></span>
       <span>ИИ-персонаж<b>8 000 ₽</b></span>
       <span>Доп. формат<b>4 000 ₽</b></span>
       <span>Диктор в «Поводе»<b>от 5 000 ₽</b></span>
@@ -602,7 +625,7 @@ footer .in{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px}
   <div class="in">
     <div class="sec-head reveal"><span class="tc">Условия</span><h2>Всё прозрачно</h2></div>
     <ul class="terms reveal">
-      <li><b>Оплата 50/50.</b> Половина до старта, половина после сдачи. Договор и закрывающие документы.</li>
+      <li><b>Оплата 50/50.</b> Половина до старта, половина после сдачи. Работаю как самозанятая: договор, акт и чек, без НДС.</li>
       <li><b>Права ваши.</b> Исключительные права на ролик переходят к вам после оплаты.</li>
       <li><b>Согласие сотрудников.</b> Лица и голоса реальных людей используем только с их письменного согласия.</li>
       <li><b>Без бесконечных правок.</b> Концепция фиксируется на ключевых кадрах, дальше меняем детали.</li>
@@ -618,10 +641,10 @@ footer .in{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px}
       <figure class="about-photo"><img src="media/about.webp" width="1144" height="1394" alt="Анастасия Барсукова"><figcaption><b>Анастасия Барсукова</b><span>AI Creative Director</span></figcaption></figure>
       <div class="about-text">
         <p>Я Анастасия Барсукова, AI Creative Director. Больше семи лет занималась HR-брендингом и корпоративными коммуникациями, затем сделала более 450 презентаций для руководителей, собственников бизнеса и международных клиентов.</p>
-        <p>Сегодня соединяю стратегию, дизайн и AI-production. Веду ролик сама от идеи до монтажа, без съёмочной группы.</p>
+        <p>Сегодня соединяю стратегию, дизайн и ИИ-продакшн. Веду ролик сама от идеи до монтажа, без съёмочной группы.</p>
         <ul class="about-stats">
           <li><b>10+ лет</b><span>строю коммуникации между брендами и людьми</span></li>
-          <li><b>3 роли</b><span>HR-бренд, дизайн и AI-продакшн в одном человеке</span></li>
+          <li><b>3 роли</b><span>HR-бренд, дизайн и ИИ-продакшн в одном человеке</span></li>
           <li><b>24 часа</b><span>от вашего запроса до идеи и сметы</span></li>
         </ul>
       </div>
@@ -631,7 +654,7 @@ footer .in{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px}
 
 <section id="faq">
   <div class="in">
-    <div class="sec-head reveal"><span class="tc">Вопросы</span><h2>Частые вопросы об ИИ-видео для HR</h2></div>
+    <div class="sec-head reveal"><span class="tc">Важно знать</span><h2>Частые вопросы об ИИ-видео для HR</h2></div>
     <div class="faq">
       <details><summary>Что такое ИИ-ролик для HR?</summary><p>Это видео о компании, команде или вакансии, которое создаётся с помощью нейросетей вместо съёмки. Сценарий, стиль и монтаж делает человек, а кадры генерируются. Получается быстрее и в несколько раз дешевле классического продакшна.</p></details>
       <details><summary>Сколько стоит ИИ-ролик?</summary><p>Короткий ролик до 30 секунд стоит 24 000 ₽, ролик 60–90 секунд 45 000 ₽, серия из трёх роликов 110 000 ₽, кампания от 150 000 ₽. Цена фиксируется в смете до начала работы.</p></details>
@@ -658,7 +681,7 @@ footer .in{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px}
   </div>
 </section>
 
-<footer><div class="in"><span>Анастасия Барсукова | ИИ-видео для HR-бренда</span><span><a href="privacy.html" style="color:inherit">Политика обработки персональных данных</a> | Цены действительны до 31.12.2026</span></div></footer>
+<footer><div class="in"><span>Барсукова Анастасия Сергеевна | самозанятая (плательщик НПД) | ИНН 250207415601</span><span><a href="privacy.html" style="color:inherit">Политика обработки персональных данных</a> | Цены действительны до 31.12.2026</span></div></footer>
 
 <script>
 (function(){
@@ -669,8 +692,8 @@ footer .in{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px}
   var SCENE = 3200, start = performance.now(), cur = 0;
   function pad(n){return String(n).padStart(2,'0')}
   function tick(now){
-    var t = Math.max(0, now - start), total = Math.floor(t/40);
-    tc.textContent = '00:' + pad(Math.floor(total/1500)%60) + ':' + pad(Math.floor(total/25)%60) + ':' + pad(total%25);
+    var t = Math.max(0, now - start), total = Math.floor(t*30/1000);
+    tc.textContent = '00:' + pad(Math.floor(total/1800)%60) + ':' + pad(Math.floor(total/30)%60) + ':' + pad(total%30);
     var i = Math.floor(t/SCENE) % scenes.length;
     prog.style.width = ((t%SCENE)/SCENE*100) + '%';
     if(i !== cur){ scenes[cur].classList.remove('on'); scenes[i].classList.add('on'); cur = i; }
