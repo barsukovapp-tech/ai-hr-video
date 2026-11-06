@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://ai-hr-video.ru/sitemap.xml
+Sitemap: https://ai-hr-video.vercel.app/sitemap.xml
