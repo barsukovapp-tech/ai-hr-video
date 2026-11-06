@@ -365,6 +365,9 @@ section,header{scroll-margin-top:72px}
 .slot.scope .badge{bottom:calc(12.8% + 12px)}
 .sub{margin-top:16px;padding:22px 24px;border:1px solid var(--line);border-radius:14px;background:var(--glow);display:flex;justify-content:space-between;align-items:center;gap:24px;color:var(--on-accent)}
 .sub>div:first-child{display:grid;gap:6px;min-width:0}
+.sub.ny{position:relative;overflow:hidden}
+.sub.ny>div{position:relative;z-index:1}
+.snow{position:absolute;inset:0;width:100%;height:100%;pointer-events:none}
 .sub .tc{color:rgba(255,255,255,.75)}
 .sub .name{font-family:var(--display);font-size:24px;line-height:1.1}
 .sub p{font-size:14.5px;color:rgba(255,255,255,.85);max-width:62ch}
@@ -631,7 +634,7 @@ section,header{scroll-margin-top:72px}
       <li><b>Согласие сотрудников.</b> Лица и голоса реальных людей используем только с их письменного согласия.</li>
       <li><b>Никаких сюрпризов в финале.</b> Вы утверждаете героев и стиль на ключевых кадрах ещё до создания видео, поэтому готовый ролик совпадает с ожиданиями.</li>
     </ul>
-    <div class="sub reveal"><div><span class="tc">К праздникам</span><div class="name">Новогодние ролики</div><p>Принимаю в работу до 15 декабря 2026 года.</p></div></div>
+    <div class="sub ny reveal"><canvas class="snow" aria-hidden="true"></canvas><div><span class="tc">К праздникам</span><div class="name">Новогодние ролики</div><p>Принимаю в работу до 15 декабря 2026 года.</p></div></div>
   </div>
 </section>
 
@@ -748,6 +751,28 @@ section,header{scroll-margin-top:72px}
     });
     window.addEventListener('scroll', function(){ if(!ticking){ ticking = true; requestAnimationFrame(onScroll); } }, {passive:true});
     onScroll();
+  }
+
+  // Снег в новогодней плашке: идёт, только пока плашка на экране
+  var snow = document.querySelector('.snow');
+  if (snow && !reduce && 'IntersectionObserver' in window) {
+    var sx = snow.getContext('2d'), flakes = [], snowOn = false, dpr = Math.min(window.devicePixelRatio || 1, 2), sw = 0, sh = 0;
+    var sizeSnow = function(){
+      sw = snow.clientWidth; sh = snow.clientHeight; snow.width = sw * dpr; snow.height = sh * dpr; sx.setTransform(dpr, 0, 0, dpr, 0, 0);
+      var n = Math.round(Math.min(90, Math.max(30, sw / 13)));
+      flakes = []; for (var i = 0; i < n; i++) flakes.push({x: Math.random() * sw, y: Math.random() * sh, r: .8 + Math.random() * 2, v: .2 + Math.random() * .45, p: Math.random() * 6.28, a: .35 + Math.random() * .5});
+    };
+    var fall = function(){
+      if (!snowOn) return;
+      sx.clearRect(0, 0, sw, sh); sx.fillStyle = '#fff';
+      flakes.forEach(function(f){
+        f.y += f.v; f.p += .012; if (f.y > sh + 4) { f.y = -4; f.x = Math.random() * sw; }
+        sx.globalAlpha = f.a; sx.beginPath(); sx.arc(f.x + Math.sin(f.p) * 9, f.y, f.r, 0, 6.29); sx.fill();
+      });
+      requestAnimationFrame(fall);
+    };
+    sizeSnow(); window.addEventListener('resize', sizeSnow);
+    new IntersectionObserver(function(es){ var on = es[0].isIntersecting; if (on && !snowOn) { snowOn = true; fall(); } else if (!on) snowOn = false; }).observe(snow);
   }
 
   // Звук у примера: браузеры запускают видео только без звука, включает зритель
