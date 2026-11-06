@@ -246,13 +246,14 @@ nav .btn{padding:9px 16px;font-size:14px}
 /* packs */
 .packs-wrap{background:var(--surface);border-block:1px solid var(--line)}
 .packs{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
-.pack{min-width:0;border:1px solid var(--line);border-radius:18px;padding:24px 22px;display:grid;gap:14px;grid-template-rows:auto auto auto 1fr auto;background:var(--bg);transition:transform .3s,border-color .3s}
+.pack{min-width:0;border:1px solid var(--line);border-radius:18px;padding:24px 22px;display:grid;gap:14px;grid-template-rows:auto auto auto auto 1fr auto;background:var(--bg);transition:transform .3s,border-color .3s}
 .pack:hover{transform:translateY(-6px);border-color:var(--accent)}
 .pack.hit{background:var(--accent);color:var(--on-accent);border-color:var(--accent)}
 .pack.hit .tc,.pack.hit .for{color:color-mix(in srgb,var(--on-accent) 75%,transparent)}
 .pack .name{font-family:var(--display);font-size:24px;line-height:1.1}
 .price{font-family:var(--display);font-size:30px;line-height:1;font-variant-numeric:tabular-nums}
 .price small{display:block;font-family:var(--body);font-size:13.5px;margin-top:6px;opacity:.75}
+.pack .gist{font-size:16px;line-height:1.3;font-weight:600}
 .pack ul{margin:0;padding-left:18px;display:grid;gap:5px;font-size:14.5px}
 .pack .for{font-size:13.5px;color:var(--muted);border-top:1px solid color-mix(in srgb,currentColor 20%,transparent);padding-top:12px}
 .extras{margin-top:28px;display:flex;flex-wrap:wrap;gap:10px}
@@ -559,6 +560,7 @@ section,header{scroll-margin-top:72px}
         <span class="tc">до 30 с | 5 дней</span>
         <div class="name">Повод</div>
         <div class="price">24 000 ₽</div>
+        <div class="gist">Одна мысль: быстро сообщить о важном</div>
         <ul><li>Сценарий под задачу</li><li>Генерация, монтаж, музыка с лицензией</li><li>Субтитры, один формат</li><li>2 круга правок</li></ul>
         <div class="for">Поздравления, анонсы, ролик к вакансии</div>
       </article>
@@ -566,6 +568,7 @@ section,header{scroll-margin-top:72px}
         <span class="tc">60–90 с | 8 дней | хит</span>
         <div class="name">История</div>
         <div class="price">45 000 ₽</div>
+        <div class="gist">Герой и сюжет: зритель запомнит и поверит</div>
         <ul><li>Сценарий и ключевые кадры на согласование</li><li>ИИ-голос или диктор</li><li>16:9 + вертикальная нарезка 15 с</li><li>2 круга правок</li></ul>
         <div class="for">Ценности, онбординг, имиджевый ролик</div>
       </article>
@@ -573,6 +576,7 @@ section,header{scroll-margin-top:72px}
         <span class="tc">3 × до 60 с | 15 дней</span>
         <div class="name">Серия</div>
         <div class="price">110 000 ₽<small>около 36 700 ₽ за ролик, выгода 18%</small></div>
+        <div class="gist">Одна тема в нескольких роликах: вас видят регулярно</div>
         <ul><li>Общая концепция и единый стиль</li><li>ИИ-голос или диктор</li><li>3 вертикальные нарезки</li><li>2 круга правок на ролик</li></ul>
         <div class="for">Рубрика о профессиях, серия о ценностях</div>
       </article>
@@ -580,6 +584,7 @@ section,header{scroll-margin-top:72px}
         <span class="tc">6 роликов | от 20 дней</span>
         <div class="name">Кампания</div>
         <div class="price">150 000 ₽<small>стартовая цена, точная по брифу</small></div>
+        <div class="gist">Большой запуск: главный фильм и ролики вокруг него</div>
         <ul><li>Главный ролик 60–90 с</li><li>5 роликов до 30 с</li><li>ИИ-персонаж компании</li><li>Вертикальные нарезки</li></ul>
         <div class="for">Запуск EVP, массовый найм, юбилей компании</div>
       </article>
