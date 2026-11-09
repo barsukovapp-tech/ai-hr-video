@@ -208,10 +208,16 @@ nav .btn{padding:9px 16px;font-size:14px}
 .slot.tall.q{grid-column:span 3}
 .slot.feature{grid-column:1/-1}
 .slot.feature .screen{aspect-ratio:16/9}
-.sound{position:absolute;top:14px;right:14px;z-index:2;display:inline-flex;align-items:center;gap:8px;font:600 13px var(--body);padding:8px 14px;border-radius:999px;border:1px solid color-mix(in srgb,var(--on-frame) 30%,transparent);background:color-mix(in srgb,var(--frame) 65%,transparent);color:var(--on-frame);cursor:pointer;backdrop-filter:blur(6px)}
-.sound:hover{background:color-mix(in srgb,var(--frame) 85%,transparent)}
-.sound i{width:8px;height:8px;border-radius:50%;background:var(--muted)}
-.sound[aria-pressed="true"] i{background:var(--rec)}
+.sound{position:absolute;right:10px;bottom:10px;z-index:2;width:38px;height:38px;display:grid;place-items:center;padding:0;border-radius:50%;border:1px solid color-mix(in srgb,var(--on-frame) 25%,transparent);background:color-mix(in srgb,var(--frame) 55%,transparent);color:var(--on-frame);cursor:pointer;backdrop-filter:blur(6px);-webkit-backdrop-filter:blur(6px);opacity:.85;transition:opacity .2s,background .2s}
+.sound:hover{opacity:1;background:color-mix(in srgb,var(--frame) 80%,transparent)}
+.sound svg{width:18px;height:18px;fill:currentColor;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.sound .i-on,.sound[aria-pressed="true"] .i-off{display:none}
+.sound[aria-pressed="true"] .i-on{display:block}
+.sound[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);opacity:1}
+.spin{position:absolute;left:50%;top:50%;width:46px;height:46px;margin:-23px 0 0 -23px;border-radius:50%;border:4px solid rgba(255,255,255,.22);border-top-color:#fff;background:rgba(2,3,10,.55);box-shadow:0 0 0 6px rgba(2,3,10,.35);z-index:1;opacity:0;pointer-events:none;transition:opacity .25s;animation:spin .9s linear infinite}
+.screen.loading .spin{opacity:1}
+@keyframes spin{to{transform:rotate(360deg)}}
+.slot figcaption .fmt{font-family:var(--mono);font-size:12px;letter-spacing:.04em;color:var(--rec);margin-bottom:2px}
 .slot.tall .screen{aspect-ratio:9/16}
 .slot .screen{position:relative;aspect-ratio:16/9;max-width:100%;border-radius:14px;overflow:hidden;background:var(--frame);color:var(--on-frame)}
 .slot.wide .screen{aspect-ratio:auto;height:100%;min-height:220px}
@@ -226,8 +232,6 @@ nav .btn{padding:9px 16px;font-size:14px}
 @property --y{syntax:"<percentage>";inherits:false;initial-value:40%}
 .scan{position:absolute;left:0;right:0;height:40%;background:linear-gradient(to bottom,transparent,color-mix(in srgb,var(--on-frame) 14%,transparent),transparent);animation:scan 3.2s linear infinite}
 @keyframes scan{from{top:-40%}to{top:100%}}
-.slot .badge{position:absolute;left:12px;bottom:12px;right:12px;display:flex;justify-content:space-between;align-items:center;gap:8px;font-family:var(--mono);font-size:11.5px;letter-spacing:.06em}
-.slot .badge span:first-child{background:color-mix(in srgb,var(--frame) 70%,transparent);padding:4px 8px;border-radius:6px}
 .slot figcaption{display:grid;gap:2px}
 .slot figcaption b{font-weight:600}
 .slot figcaption span{font-size:14px;color:var(--muted)}
@@ -322,7 +326,7 @@ footer .in{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px}
 /* Тема: чёрный фон, синяя световая волна, карточки с тонкой рамкой */
 .tc{font-size:12px;letter-spacing:.07em;font-weight:600}
 .sec-head .tc{justify-self:start;padding:5px 14px 4px;border-radius:999px;background:var(--accent);color:var(--on-accent);line-height:1.2}
-.facts,.vf-ui,.slot .badge{font-size:12.5px;letter-spacing:.02em;font-weight:500}
+.facts,.vf-ui{font-size:12.5px;letter-spacing:.02em;font-weight:500}
 .extras b{font-size:14px;font-weight:600}
 .hero{position:relative;overflow:hidden;background:url(media/wave.svg) center bottom/cover no-repeat}
 .hero .in{position:relative}
@@ -361,8 +365,7 @@ footer .in{display:flex;flex-wrap:wrap;justify-content:space-between;gap:8px}
 .nav-links a:hover{color:var(--fg)}
 section,header{scroll-margin-top:72px}
 .slot .screen{border:1px solid var(--line)}
-.slot.scope .sound{top:calc(12.8% + 12px);right:12px}
-.slot.scope .badge{bottom:calc(12.8% + 12px)}
+.slot.scope .sound{bottom:calc(12.8% + 10px);right:10px}
 .sub{margin-top:16px;padding:22px 24px;border:1px solid var(--line);border-radius:14px;background:var(--glow);display:flex;justify-content:space-between;align-items:center;gap:24px;color:var(--on-accent)}
 .sub>div:first-child{display:grid;gap:6px;min-width:0}
 .sub.ny{position:relative;overflow:hidden}
@@ -386,6 +389,8 @@ section,header{scroll-margin-top:72px}
   .slot.wide .screen{aspect-ratio:16/9;height:auto;min-height:0}
   .why,.uses{grid-template-columns:1fr}
   .timeline{grid-template-columns:1fr;border-top:0;border-left:2px solid var(--fg);padding-top:0;padding-left:24px;gap:22px}
+  ol.timeline{padding-left:22px}
+  .timeline li{padding-right:0}
   .playhead{display:none}
   .terms{grid-template-columns:1fr}
   .about{grid-template-columns:1fr;gap:28px}
@@ -473,74 +478,65 @@ section,header{scroll-margin-top:72px}
       <figure class="slot feature scope reveal">
         <div class="screen">
           <video src="media/24h.mp4?v=2" poster="media/24h.webp" muted loop playsinline preload="none" aria-label="Имиджевый ролик «24 часа»: одна посылка проходит через руки восьми сотрудников, а в финале — пустое место для нового коллеги"></video>
-          <button class="sound" type="button" aria-pressed="false"><i></i><span>Включить звук</span></button>
-          <div class="badge"><span>16:9 | 28 с</span></div>
+          <span class="spin" aria-hidden="true"></span><button class="sound" type="button" aria-pressed="false" aria-label="Включить звук"><svg class="i-off" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9h4l5-4v14l-5-4H4z"/><path d="M17 9l5 6M22 9l-5 6" fill="none"/></svg><svg class="i-on" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9h4l5-4v14l-5-4H4z"/><path d="M16.5 8.5a5 5 0 0 1 0 7M19 6a8.5 8.5 0 0 1 0 12" fill="none"/></svg></button>
         </div>
-        <figcaption><b>«24 часа» | имиджевое кино</b><span>Пакет «Повод» | сутки логистической компании, восемь профессий, одна посылка</span></figcaption>
+        <figcaption><span class="fmt">16:9 | 28 с</span><b>«24 часа» | имиджевое кино</b><span>Пакет «Повод» | сутки логистической компании, восемь профессий, одна посылка</span></figcaption>
       </figure>
       <figure class="slot tall q reveal">
         <div class="screen">
           <video src="media/first-day.mp4?v=2" poster="media/first-day.webp" muted loop playsinline preload="none" aria-label="Вертикальный ролик «Первый день»: первый рабочий день в дарксторе глазами новичка, с сообщениями из рабочего чата"></video>
-          <button class="sound" type="button" aria-pressed="false"><i></i><span>Включить звук</span></button>
-          <div class="badge"><span>9:16 | 30 с</span></div>
+          <span class="spin" aria-hidden="true"></span><button class="sound" type="button" aria-pressed="false" aria-label="Включить звук"><svg class="i-off" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9h4l5-4v14l-5-4H4z"/><path d="M17 9l5 6M22 9l-5 6" fill="none"/></svg><svg class="i-on" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9h4l5-4v14l-5-4H4z"/><path d="M16.5 8.5a5 5 0 0 1 0 7M19 6a8.5 8.5 0 0 1 0 12" fill="none"/></svg></button>
         </div>
-        <figcaption><b>«Первый день» | POV-онбординг</b><span>Пакет «Повод» | реалистичное видео от первого лица, сообщения рабочего чата</span></figcaption>
+        <figcaption><span class="fmt">9:16 | 30 с</span><b>«Первый день» | POV-онбординг</b><span>Пакет «Повод» | реалистичное видео от первого лица, сообщения рабочего чата</span></figcaption>
       </figure>
       <figure class="slot tall q reveal">
         <div class="screen">
           <video src="media/refer-friend.mp4?v=1" poster="media/refer-friend.webp" muted loop playsinline preload="none" aria-label="Вертикальный ролик «Приведи друга»: реферальная программа на заводе, история двух друзей в переписке"></video>
-          <button class="sound" type="button" aria-pressed="false"><i></i><span>Включить звук</span></button>
-          <div class="badge"><span>9:16 | 22 с</span></div>
+          <span class="spin" aria-hidden="true"></span><button class="sound" type="button" aria-pressed="false" aria-label="Включить звук"><svg class="i-off" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9h4l5-4v14l-5-4H4z"/><path d="M17 9l5 6M22 9l-5 6" fill="none"/></svg><svg class="i-on" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9h4l5-4v14l-5-4H4z"/><path d="M16.5 8.5a5 5 0 0 1 0 7M19 6a8.5 8.5 0 0 1 0 12" fill="none"/></svg></button>
         </div>
-        <figcaption><b>«Приведи друга» | рекомендации</b><span>Пакет «Повод» | реалистичное видео, переписка поверх кадра</span></figcaption>
+        <figcaption><span class="fmt">9:16 | 22 с</span><b>«Приведи друга» | рекомендации</b><span>Пакет «Повод» | реалистичное видео, переписка поверх кадра</span></figcaption>
       </figure>
       <figure class="slot tall q reveal">
         <div class="screen">
           <video src="media/vacancy-flat.mp4?v=2" poster="media/vacancy-flat.webp" muted loop playsinline preload="none" aria-label="Ролик к вакансии кладовщика, плоская векторная анимация"></video>
-          <button class="sound" type="button" aria-pressed="false"><i></i><span>Включить звук</span></button>
-          <div class="badge"><span>9:16 | 21 с</span></div>
+          <span class="spin" aria-hidden="true"></span><button class="sound" type="button" aria-pressed="false" aria-label="Включить звук"><svg class="i-off" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9h4l5-4v14l-5-4H4z"/><path d="M17 9l5 6M22 9l-5 6" fill="none"/></svg><svg class="i-on" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9h4l5-4v14l-5-4H4z"/><path d="M16.5 8.5a5 5 0 0 1 0 7M19 6a8.5 8.5 0 0 1 0 12" fill="none"/></svg></button>
         </div>
-        <figcaption><b>Вакансия «Кладовщик» | вектор</b><span>Пакет «Повод» | моушн-дизайн, инфографика</span></figcaption>
+        <figcaption><span class="fmt">9:16 | 21 с</span><b>Вакансия «Кладовщик» | вектор</b><span>Пакет «Повод» | моушн-дизайн, инфографика</span></figcaption>
       </figure>
       <figure class="slot tall q reveal">
         <div class="screen">
           <video src="media/professions-01.mp4?v=2" poster="media/professions-01.webp" muted loop playsinline preload="none" aria-label="Рубрика о профессиях, выпуск 1: инженер-технолог, акварель"></video>
-          <button class="sound" type="button" aria-pressed="false"><i></i><span>Включить звук</span></button>
-          <div class="badge" style="justify-content:flex-end"><span>9:16 | 30 с</span></div>
+          <span class="spin" aria-hidden="true"></span><button class="sound" type="button" aria-pressed="false" aria-label="Включить звук"><svg class="i-off" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9h4l5-4v14l-5-4H4z"/><path d="M17 9l5 6M22 9l-5 6" fill="none"/></svg><svg class="i-on" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9h4l5-4v14l-5-4H4z"/><path d="M16.5 8.5a5 5 0 0 1 0 7M19 6a8.5 8.5 0 0 1 0 12" fill="none"/></svg></button>
         </div>
-        <figcaption><b>«Профессии изнутри» | выпуск 01</b><span>Пакет «Серия» | акварельный скетчбук, рассказ от первого лица</span></figcaption>
+        <figcaption><span class="fmt">9:16 | 30 с</span><b>«Профессии изнутри» | выпуск 01</b><span>Пакет «Серия» | акварельный скетчбук, рассказ от первого лица</span></figcaption>
       </figure>
       <figure class="slot feature reveal">
         <div class="screen">
-          <video id="nyVideo" src="media/new-year-december.mp4?v=2" poster="media/new-year-december.webp" muted loop playsinline preload="none" aria-label="Новогоднее поздравление команде компании «Норд-Логистик»"></video>
-          <button class="sound" type="button" aria-pressed="false"><i></i><span>Включить звук</span></button>
-          <div class="badge"><span>16:9 | 18 с</span></div>
+          <video id="nyVideo" src="media/new-year-december.mp4?v=2" poster="media/new-year-december.webp" muted loop playsinline preload="none" aria-label="Новогоднее поздравление команде, бумажная диорама"></video>
+          <span class="spin" aria-hidden="true"></span><button class="sound" type="button" aria-pressed="false" aria-label="Включить звук"><svg class="i-off" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9h4l5-4v14l-5-4H4z"/><path d="M17 9l5 6M22 9l-5 6" fill="none"/></svg><svg class="i-on" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9h4l5-4v14l-5-4H4z"/><path d="M16.5 8.5a5 5 0 0 1 0 7M19 6a8.5 8.5 0 0 1 0 12" fill="none"/></svg></button>
         </div>
-        <figcaption><b>Новогоднее поздравление команде</b><span>Пакет «Повод» | бумажная диорама, кинетические титры, музыка</span></figcaption>
+        <figcaption><span class="fmt">16:9 | 18 с</span><b>Новогоднее поздравление команде</b><span>Пакет «Повод» | бумажная диорама, кинетические титры, музыка</span></figcaption>
       </figure>
       <figure class="slot reveal">
         <div class="screen">
           <video src="media/values-flat2d.mp4?v=2" poster="media/values-flat2d.webp" muted loop playsinline preload="none" aria-label="Ролик о ценностях компании, плоская 2D-анимация"></video>
-          <button class="sound" type="button" aria-pressed="false"><i></i><span>Включить звук</span></button>
-          <div class="badge"><span>16:9 | 29 с</span></div>
+          <span class="spin" aria-hidden="true"></span><button class="sound" type="button" aria-pressed="false" aria-label="Включить звук"><svg class="i-off" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9h4l5-4v14l-5-4H4z"/><path d="M17 9l5 6M22 9l-5 6" fill="none"/></svg><svg class="i-on" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9h4l5-4v14l-5-4H4z"/><path d="M16.5 8.5a5 5 0 0 1 0 7M19 6a8.5 8.5 0 0 1 0 12" fill="none"/></svg></button>
         </div>
-        <figcaption><b>Ценности компании | 2D-эксплейнер</b><span>Пакет «Повод» | плоская анимация, дикторская озвучка, титры-плашки</span></figcaption>
+        <figcaption><span class="fmt">16:9 | 29 с</span><b>Ценности компании | 2D-эксплейнер</b><span>Пакет «Повод» | плоская анимация, дикторская озвучка, титры-плашки</span></figcaption>
       </figure>
       <figure class="slot reveal">
         <div class="screen">
           <video src="media/onboarding.mp4?v=2" poster="media/onboarding.webp" muted loop playsinline preload="none" aria-label="Онбординг новичков, изометрическая 3D-анимация"></video>
-          <button class="sound" type="button" aria-pressed="false"><i></i><span>Включить звук</span></button>
-          <div class="badge"><span>16:9 | 32 с</span></div>
+          <span class="spin" aria-hidden="true"></span><button class="sound" type="button" aria-pressed="false" aria-label="Включить звук"><svg class="i-off" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9h4l5-4v14l-5-4H4z"/><path d="M17 9l5 6M22 9l-5 6" fill="none"/></svg><svg class="i-on" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9h4l5-4v14l-5-4H4z"/><path d="M16.5 8.5a5 5 0 0 1 0 7M19 6a8.5 8.5 0 0 1 0 12" fill="none"/></svg></button>
         </div>
-        <figcaption><b>Онбординг новичков | изометрия</b><span>3D-остров, озвучка, таблички-указатели</span></figcaption>
+        <figcaption><span class="fmt">16:9 | 32 с</span><b>Онбординг новичков | изометрия</b><span>3D-остров, озвучка, таблички-указатели</span></figcaption>
       </figure>
       <figure class="slot reveal">
         <div class="screen">
           <video src="media/year-results.mp4?v=2" poster="media/year-results.webp" muted loop playsinline preload="none" aria-label="Итоги года в цифрах, моушн-инфографика"></video>
-          <button class="sound" type="button" aria-pressed="false"><i></i><span>Включить звук</span></button>
-          <div class="badge"><span>16:9 | 33 с</span></div>
+          <span class="spin" aria-hidden="true"></span><button class="sound" type="button" aria-pressed="false" aria-label="Включить звук"><svg class="i-off" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9h4l5-4v14l-5-4H4z"/><path d="M17 9l5 6M22 9l-5 6" fill="none"/></svg><svg class="i-on" viewBox="0 0 24 24" aria-hidden="true"><path d="M4 9h4l5-4v14l-5-4H4z"/><path d="M16.5 8.5a5 5 0 0 1 0 7M19 6a8.5 8.5 0 0 1 0 12" fill="none"/></svg></button>
         </div>
-        <figcaption><b>Итоги года в цифрах</b><span>Моушн-инфографика, счётчики, музыка в такт</span></figcaption>
+        <figcaption><span class="fmt">16:9 | 33 с</span><b>Итоги года в цифрах</b><span>Моушн-инфографика, счётчики, музыка в такт</span></figcaption>
       </figure>
     </div>
   </div>
@@ -810,9 +806,11 @@ section,header{scroll-margin-top:72px}
       es.forEach(function(e){
         var v = e.target;
         if (e.isIntersecting) {
+          v.dataset.vis = '1';
           if (!v.dataset.started) claim(v);
+          if (v.readyState < 3) v.parentNode.classList.add('loading');
           var p = v.play(); if (p && p.catch) p.catch(function(){});
-        } else v.pause();
+        } else { delete v.dataset.vis; v.pause(); v.parentNode.classList.remove('loading'); }
       });
     }, {threshold:.35});
     vids.forEach(function(v){
@@ -820,18 +818,31 @@ section,header{scroll-margin-top:72px}
       pre.observe(v); vio.observe(v);
     });
   }
+  // Значок загрузки: виден, пока ролик на экране, но ещё не играет
+  var setLoad = function(v, on){ v.parentNode.classList.toggle('loading', on); };
   vids.forEach(function(v){
-    if (reduce) { v.controls = true; }
+    if (reduce) { v.controls = true; return; }
+    v.addEventListener('playing', function(){ setLoad(v, false); });
+    v.addEventListener('waiting', function(){ if (v.dataset.vis) setLoad(v, true); });
+    v.addEventListener('canplay', function(){ if (v.dataset.vis && v.paused) { var p = v.play(); if (p && p.catch) p.catch(function(){}); } });
+    v.addEventListener('error', function(){ setLoad(v, false); });
+  });
+  var setSound = function(v, on){
+    v.muted = !on; v.loop = !on;
+    var b = v.parentNode.querySelector('.sound'); if (!b) return;
+    b.setAttribute('aria-pressed', on ? 'true' : 'false');
+    b.setAttribute('aria-label', on ? 'Выключить звук' : 'Включить звук');
+  };
+  vids.forEach(function(v){
+    // Со звуком ролик проигрывается один раз, на повторе звук выключается
+    v.addEventListener('ended', function(){ setSound(v, false); v.currentTime = 0; var p = v.play(); if (p && p.catch) p.catch(function(){}); });
     var sb = v.parentNode.querySelector('.sound'); if (!sb) return;
-    var label = sb.querySelector('span'), base = label.textContent;
     sb.addEventListener('click', function(){
       var on = v.muted;
-      vids.forEach(function(o){ if (o !== v && !o.muted) { o.muted = true; var b = o.parentNode.querySelector('.sound'); if (b) { b.setAttribute('aria-pressed','false'); b.querySelector('span').textContent = b.dataset.base || 'Звук'; } } });
-      v.muted = !on; sb.setAttribute('aria-pressed', on ? 'true' : 'false');
-      label.textContent = on ? 'Выключить звук' : base;
+      vids.forEach(function(o){ if (o !== v && !o.muted) setSound(o, false); });
+      setSound(v, on);
       if (on) { v.currentTime = 0; var p = v.play(); if (p && p.catch) p.catch(function(){}); }
     });
-    sb.dataset.base = base;
   });
 })();
 </script>
