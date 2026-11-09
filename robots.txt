@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://ai-hr-video.vercel.app/sitemap.xml
+Sitemap: https://barsukovapp-tech.github.io/ai-hr-video/sitemap.xml
