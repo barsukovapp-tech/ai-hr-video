@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://barsukovapp-tech.github.io/ai-hr-video/sitemap.xml
+Sitemap: https://hr-video.ru/sitemap.xml
