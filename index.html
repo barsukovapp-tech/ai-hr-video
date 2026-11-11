@@ -416,6 +416,12 @@ section,header{scroll-margin-top:72px}
   .final{padding:36px 20px;border-radius:22px;gap:28px}
   nav .btn{display:none}
 }
+/* широкие мониторы: сайт пропорционально крупнее, без пустых полей по краям */
+@media (min-width:1800px){body{zoom:1.12}}
+@media (min-width:2100px){body{zoom:1.3}}
+@media (min-width:2500px){body{zoom:1.55}}
+@media (min-width:3000px){body{zoom:1.85}}
+@media (min-width:3600px){body{zoom:2.2}}
 @media (prefers-reduced-motion:reduce){
   *,*::before,*::after{animation:none!important;transition:none!important}
   .reveal.pending{transform:none;opacity:1}
