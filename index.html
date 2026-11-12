@@ -416,6 +416,10 @@ section,header{scroll-margin-top:72px}
   .final{padding:36px 20px;border-radius:22px;gap:28px}
   nav .btn{display:none}
 }
+.cookie{position:fixed;left:16px;right:16px;bottom:16px;z-index:50;max-width:560px;margin:0 auto;display:flex;align-items:center;gap:14px;padding:12px 14px 12px 18px;border-radius:14px;background:color-mix(in srgb,var(--frame) 92%,transparent);border:1px solid var(--line);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);font-size:13.5px;color:var(--muted);box-shadow:0 10px 30px rgba(0,0,0,.4)}
+.cookie a{color:var(--fg)}
+.cookie button{flex-shrink:0;font:600 13px var(--body);padding:9px 14px;border-radius:10px;border:0;background:var(--fg);color:var(--bg);cursor:pointer}
+.cookie[hidden]{display:none}
 /* широкие мониторы: сайт пропорционально крупнее, без пустых полей по краям */
 @media (min-width:1800px){body{zoom:1.12}}
 @media (min-width:2100px){body{zoom:1.3}}
@@ -428,6 +432,18 @@ section,header{scroll-margin-top:72px}
   .vf-scene:first-child{opacity:1}
 }
 </style>
+<!-- Yandex.Metrika counter -->
+<script>
+  (function(m,e,t,r,i,k,a){
+    m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};
+    m[i].l=1*new Date();
+    for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}
+    k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)
+  })(window, document,'script','https://mc.yandex.ru/metrika/tag.js?id=114210249', 'ym');
+  ym(114210249, 'init', {ssr:true, webvisor:true, clickmap:true, referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true});
+</script>
+<noscript><div><img src="https://mc.yandex.ru/watch/114210249" style="position:absolute; left:-9999px;" alt="" /></div></noscript>
+<!-- /Yandex.Metrika counter -->
 </head>
 <body>
 <nav>
@@ -627,7 +643,7 @@ section,header{scroll-margin-top:72px}
   </div>
 </section>
 
-<section>
+<section id="process">
   <div class="in">
     <div class="sec-head reveal"><span class="tc">Процесс</span><h2>Как идёт работа</h2></div>
     <ol class="timeline reveal">
@@ -700,6 +716,7 @@ section,header{scroll-margin-top:72px}
   </div>
 </section>
 
+<div class="cookie" id="cookie" hidden><span>Сайт использует cookies и Яндекс Метрику, чтобы понимать, что интересно посетителям. <a href="privacy.html#cookies">Подробнее</a></span><button type="button">Понятно</button></div>
 <footer><div class="in"><span>Барсукова Анастасия Сергеевна | самозанятая (плательщик НПД) | ИНН 250207415601</span><span><a href="privacy.html" style="color:inherit">Политика обработки персональных данных</a> | Цены действительны до 31.12.2026</span></div></footer>
 
 <script>
@@ -791,6 +808,22 @@ section,header{scroll-margin-top:72px}
     new IntersectionObserver(function(es){ var on = es[0].isIntersecting; if (on && !snowOn) { snowOn = true; fall(); } else if (!on) snowOn = false; }).observe(snow);
   }
 
+  // Уведомление о cookies: показываем, пока посетитель не нажмёт «Понятно»
+  var ck = document.getElementById('cookie');
+  if (ck) { var seen = false; try { seen = localStorage.getItem('ck') === '1'; } catch(e){}
+    if (!seen) ck.hidden = false;
+    ck.querySelector('button').addEventListener('click', function(){ ck.hidden = true; try { localStorage.setItem('ck','1'); } catch(e){} }); }
+  // Цели Метрики: нажатия на контакты считаются заявкой
+  var goal = function(n){ try { if (window.ym) ym(114210249, 'reachGoal', n); } catch(e){} };
+  document.addEventListener('click', function(e){
+    var a = e.target.closest && e.target.closest('a,button'); if (!a) return;
+    var h = a.getAttribute('href') || '';
+    if (/^https:\/\/t\.me\//.test(h)) { goal('lead_telegram'); goal('lead'); }
+    else if (/^mailto:/.test(h)) { goal('lead_email'); goal('lead'); }
+    else if (/^tel:/.test(h)) { goal('lead_phone'); goal('lead'); }
+    else if (h === '#contact') goal('cta_contact');
+    else if (a.classList.contains('sound') && a.getAttribute('aria-pressed') !== 'true') goal('video_sound');
+  }, true);
   // Звук у примера: браузеры запускают видео только без звука, включает зритель
   var vids = [].slice.call(document.querySelectorAll('.slot video'));
   // На телефоне ролик занимает 170–350 px в ширину: берём лёгкую версию (-m.mp4), она в 2–2,5 раза меньше
